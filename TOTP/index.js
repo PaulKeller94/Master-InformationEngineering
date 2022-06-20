@@ -1,22 +1,17 @@
 const express = require("express");
 const session = require("express-session");
 const bodyparser = require("body-parser");
-var path = require("path");
+const path = require("path");
 const app = express();
-var flash = require("express-flash");
-var expressValidator = require("express-validator");
-var mysql = require("mysql");
-var bcrypt = require("bcrypt");
-var dbconfig = require("./database");
-var connection = mysql.createConnection(dbconfig.connection);
+const flash = require("express-flash");
+const expressValidator = require("express-validator");
+const mysql = require("mysql");
+const dbconfig = require("./database");
+const connection = mysql.createConnection(dbconfig.connection);
 const crypto = require("crypto");
-var bcrypt = require('bcrypt-nodejs');
 const { authenticator } = require("otplib");
 const QRCode = require("qrcode");
 connection.query("USE " + dbconfig.database);
-const BcryptSalt = require('bcrypt-salt');
-const saltHash = require('password-salt-and-hash');
-const { x64 } = require("crypto-js");
 app.use(session({ secret: "sessionsecret777" }));
 app.use(bodyparser.urlencoded({ apptended: true }));
 app.engine("html", require("ejs").renderFile);
@@ -25,7 +20,9 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, "/views"));
 app.use(flash());
 app.use(expressValidator());
+const encrypt = require('./encrypt'); 
 
+//Check db-config
 //console.log(dbconfig)
 
 
@@ -44,27 +41,33 @@ app.get("/", (req, res) => {
 });
 
 app.post("/sign-up", (req, res) => {
-  //var salt = bcrypt.genSaltSync(randomNumber);
-
   
   const username = req.body.username,
     password = req.body.password,
     secret = authenticator.generateSecret();
   
-  // hash psw
-  let hashPassword = saltHash.generateSaltHash(password);
-  //console.log(hashPassword);
+  // hash psw using teddy-secure
+  let hash = "";
+  let salt = "";
+  
+  encrypt.hash(password, function(result){
+      hash = result.hash;
+      salt = result.salt;
+    
+  });
+  console.log("hash", hash);
+  console.log("salt", salt);
+
 
   var newUserMysql = {
     username: username,
     secret: secret,
-   // password: bcrypt.hashSync(password, salt)  // use the generateHash function in our user model
-   password : hashPassword.password, 
-   salt: hashPassword.salt
+    password : hash, 
+    salt: salt
   };
 
 // check user_credentials
- console.log(newUserMysql);
+ console.log("newUser:", newUserMysql);
 
   var insertQuery =
     "INSERT INTO users ( secret, username, password, salt ) values (?,?,?,?)";
@@ -125,18 +128,18 @@ function verifyLogin(username, password, code, req, res, failUrl) {
       if (username != rows[0].username) {
         return res.redirect("/");
       }
-      //if (!bcrypt.compareSync(password, rows[0].password)){
-        if(!saltHash.verifySaltHash(rows[0].salt, rows[0].password, password)){
-        return res.redirect("/");
+       let decrypt; 
+       encrypt.compare(password, rows[0].password, rows[0].salt, function(result){
+       decrypt=  result;
+      });
+      if(!decrypt){
+       return res.redirect("/");
       }
       if (!authenticator.check(code, rows[0].secret)) {
-      
         console.log("2FA success: " ,authenticator.check(code, rows[0].secret))
        return res.redirect("/");
       }
-      console.log("2FA success: " ,authenticator.check(code, rows[0].secret))
-      console.log("password:", rows[0].password);
-      console.log("salt:", rows[0].salt);
+      console.log("2FA success: " ,authenticator.check(code, rows[0].secret));
       res.render("success");
     }
   );

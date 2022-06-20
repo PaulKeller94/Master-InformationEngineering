@@ -1,5 +1,5 @@
 {
-  "name": "nodejslogin",
+  "name": "Lab8: TOTP",
   "version": "1.0.0",
   "description": "Thats it",
   "main": "index.js",
