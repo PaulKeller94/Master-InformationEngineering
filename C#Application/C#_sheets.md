@@ -1,5 +1,20 @@
 # Application Development in C#
 
+## c# in General (Goals)
+- Development of safe programs (less likely to crash)
+  - Type safety (strong type checking)
+  - Array bounds checking 
+  - Detection of the use of unintialized variables 
+- "Easy" to use 
+  - Convenient 
+  - Gather a high grade of readability within the source code 
+  - Standard approach on Documentation  
+- Internationalization
+- Garbage Collection (avoidance of memory leaks)
+- Protability (Just in time compling)
+- Object orientated 
+- High development performance 
+  
 ## C/C++ vs. C# Strong type checking 
 
 ![Strong type Checking](./images/StrongTypeChecking.png)
@@ -7,22 +22,29 @@
 ## Basic types in C# vs C/C++
 - In C/C##: A double is a aligned space in memory of 8 bytes to represent a floating point number
 - In C#: A double is already a struct with static methods
-- Internationalization: CulturInfo!
+- Internationalization: CulturInfo! (Problem: Abspeichern und wieder laden z.B. in DE speichern, in USA Starten)
 - double d4 = double.Parse("3.54")
-- f = 3.6 in C#: f = 3.7 f
-- d = 1 / 3 : integer divided by integer = 0
+- f = 3.6 (so ist es ein double), therefore in C#: f = 3.6 f
+- d = 1 / 3 : integer divided by integer = 0 (fällt bei großem Zähler nicht direkt auf, daher gefährlich!)
 
 ## Arrays
+  - Arrays werden mit new eingeleitet, hier 2 x new (1 x für Array, 1 x für Klasse)
+
     int [] test = new int[100]
+
     MyClass[] myTest = new MyClass[100]
+
     for (int i = 0; i < 100; i++){
+
         myTest = new myClass();
     }
 
 ## Unicode and Encoding 
-    - ASCII -> 7-Bit Representation, 8-bits per char to represent a String in C
+    - ASCII -> 7-Bit Representation, 8-bits per char to represent a String in C, can not interpret special characters
+    - UTF8 muss nicht immer kürzer sein z.B. Sonderzeichen (Herz), da ist es gleich lang wie Unicode, kann Sonderzeichen aber darstellen im Gegensatz zu ASCII
     - C# uses two bytes per char, so called Unicode
     - Unicode in UTF16, UTF8 en- /decoded
+   ![ascii_utf8_unicode](./images/Unicode.png)
 
 ## Definitions 
 
@@ -100,7 +122,7 @@
 writeLine has an overload of 17 therefore you don’t need to convert an int to a string
 
 ## Constructors
- - if a constructor (with params) is definied, the parameterless (default) constructor will stop existing, otherwise you have to define it
+ - if a constructor (with params) is definied, the parameterless (default) constructor will stop existing, otherwise you have to define it. If you have a struct the parameter less constructor will still be there
   
 ![constructor](./images/main_person.png)
 ![constructor](./images/L2_main.png)
@@ -131,6 +153,8 @@ writeLine has an overload of 17 therefore you don’t need to convert an int to 
                    Height == person.Height;
         }
 ## Abstract classes
+-  für gemeinsame Vereinbarungen die die abgeleiteten Klassen haben müssen, in der abstrakte klasse darf man auch Methoden definieren, abstrakte Klasse kann nicht initialisiert werden, daher lohnt es sich
+-  eine abstrakte klasse für die klasse zu setzen die man nicht initialisieren möchte 
 - can not be instantiated but derived from 
 - contains fields, methods with and without implementation
 - all derived classes must iplement (override) of the abstract methods
@@ -141,10 +165,13 @@ foreach (var item in people){
 }
 
 ## Is-Keyword 
+- If people i is student s -> wird direkt gecasted, ansonsten müsste man nochmal casten 
+- As Keyword -> gefährlicher!, da nicht abgefragt wird => keine Bedingung 
 ![Is-Keyword](./images/IsI.png)
 ![Is-Keyword](./images/IsII.png)
 
 ## Properties 
+- Properties: Backingfield, ohne Backingfield ganz normales Public Feld , get auch bei Properties e.g. idCard()
 - Get and set methods should be used to check incoming data if
 necessary
 - Example: Height is not supposed to be 0 or negative
@@ -153,7 +180,10 @@ necessary
 - A write-only condition can be realized by only implementing
 “set”
 - Properties do not need to have a background-fields, sometime you have to create one background-field!
-
+## ToString()
+- toString normalerweise zurück wenn ich nichts überlade: Namespacenmae + Klasse 
+- GetHashCode für Dictionaries zum bessere Sortieren 
+  
 ## Delegates 
 
 - Have similarities with function pointers in C/C++, but they are Object-oriented, type-safe, Secure
@@ -220,6 +250,7 @@ necessary
 - Can have events, method-definitions
 - ![Interface Example](./images/InterfaceExampleI.png)
 - ![Interface Example](./images/InterfaceExampleII.png)
+- Var item is typ object: to String überladen 
 - foreach (var item in people){    
 If(OnValueCHanged != null){
     
@@ -232,6 +263,7 @@ If(OnValueCHanged != null){
 - ![Interface Example](./images/Overview.png)
 
 ## Generics 
+- effecient + more flexibile
 - ![Generics](./images/Generics.png)
 - ![Generics](./images/GenericII.png)
 
@@ -249,9 +281,11 @@ If(OnValueCHanged != null){
 - AddRange(IEnumerable<T> collection): Many items
 - Contains(T item): checks if the list contain “item”
 - Find(Predicate<T> match) returns the first item that the predicate returns true on
+- List teuerer als Arrays
 
 - ![ListExample](./images/ListExampleI.png)
 - ![ListExample](./images/ListExampleII.png)
+- ![Collection](./images/Collection.png)
   
 ## Lamda Expressions/ Predicate
 - words.RemoveAll(s=> s.length ==3)
@@ -267,3 +301,81 @@ If(OnValueCHanged != null){
 ## Types of List
 - Queue<T> (FIFO)
 - Stack <T> (LIFO)
+
+## IEnumerable and IEnumerator 
+
+### IEnumerable 
+- GetEnumerator() 
+- ![IEnumerator](./images/IEnumerable.png)
+- “yield return” will return the object and remain the position
+for the “next call”, if it would be just return the method would be finished 
+- Practically an object with the Interface IEnumenrator will be
+generated
+- Yield: Rückgabewerte enuberable ist, yield gibt immer ein neues Element zurück, um eine Collection zu füllen 
+### IEnumerator 
+![IEnumerator](./images/IEnumerator.png)
+
+## Example Array and Enumerator
+![Arr](./images/Arr_enum.png)
+
+## Extension Methods 
+![Extension](./images/ExtensionMethods.png)
+![Extension](./images/ExtensionMethodsII.png)
+
+## Example Collection + Extension Method
+![Example](./images/Main_Car.png)
+![Example](./images/Car_class.png)
+![Example](./images/Car_collection.png)
+![Example](./images/Car_extension.png)
+
+
+
+## LINQ (Language Integrated Query)
+
+![ListExample](./images/powerful%20techniques.png)
+- LINQ nutzt extension methods, die auf ein enumerable enden 
+- Query any Collection implementing IEnumerable<T>
+- Use of extension methods
+- Main applications: 
+  - Filter (Where) => only the objects you want!
+  (Takes a Predicate)
+
+  - Sorter (OrderBy) => return something comparable (e.g. number)
+
+  - Projector (Select) => projects onto another type
+
+  - Simply return the type you want in the lambda 
+
+- All the above are implemented "lazy", the will "only" return an IEnumerable<T>
+- Convert toArray() or toList() if you want the job to be done 
+- Cascadieren: Filter -> sorter -> Projector 
+- Mydata.Where(....).OrderBy(.....).Select(......)
+  
+## Example Funfair 
+
+![Exercie](./images/ex1.png)
+![Exercie](./images/ex2.png)
+![Exercie](./images/ex3.png)
+
+## Solution 
+
+![Exercie](./images/FunfairI.png)
+![Exercie](./images/FunfairII.png)
+- Select ändert die Anzahl nicht, aber z.B. Where oder Sum !
+
+
+![Solution](./images/solution.png)
+![Solution](./images/solutionII.png)
+- Where statement:
+![Where](./images/Where.png)
+ 
+## AsyncAwait 
+![AsyncAwait](./images/AsAwI.png)
+![AsyncAwait](./images/AsAwII.png)
+![AsyncAwait](./images/AsAwIII.png)
+![AsyncAwait](./images/AsAwIIII.png)
+
+## Dictionary Example
+![Dict](./images/Dict.png)
+
+## MVVM - Pattern
