@@ -229,6 +229,18 @@ necessary
 - Static and non static method can be assigned to an Instance of a delegate
 - ![Delegate Example](../images/DelegateExampleI.png)
 - ![Delegate Example](../images/DelegateExampleII.png)
+
+### Delegate Example with void and int 
+- DelegateClass:
+  - ![DelegateClass](../images/DelegateClass.png)
+- DelegateDefinitions: 
+  - ![DelegateDefinitions](../images/DelegateDefinitions.png) 
+- DelegateVoid:
+  - ![DelegateVoid](../images/DelegateVoid.png) 
+- DelegateInt:
+  - ![DelegateInt](../images/DelegateInt.png) 
+- CallDelegates:
+  - ![CallDelegates](../images/CallDelegates.png) 
   
 ## Delegate Events 
 - An Event can be used by an object to inform other (objects) that something happened
@@ -238,7 +250,48 @@ necessary
 - ![Delegate Event Example](../images/DelegateEventExampleI.png)
 - ![Delegate Event Example](../images/DelegateEventExampleII.png)
 - ![Delegate Event Example](../images/DelegateEventExampleIII.png)
+### Delegate Example Lab1
+- Delegate Type and Event Definition:
+  - ![Delegate Type and Event Definition](../images/Lab1DelegateDefinitions.png)
+- Call Event
+  - ![Call Event](../images/Lab1CallEvent.png)
+- Subscribe to Event and execute Method:
+  - ![SubEventandCallMethod](../images/Lab1SubscribeandExecuteEvent.png)
 
+### Delegate Example Chessgame 
+- Delegate Type Definition:
+  -  public delegate void ChessBoardDelegate(Board board);
+- Delegate Events Definition: 
+  - public event ChessBoardDelegate statechanged;
+  - public event ChessBoardDelegate turnFlip;
+- Call events: 
+  - if (statechanged != null) statechanged(this);
+  - if (turnFlip != null) turnFlip(this);
+- Subscribe to the events:
+  - board.statechanged += Board_statechanged;
+  - board.turnFlip += Board_turnflip;
+    - Method Board_statechanged:
+      - private void Board_statechanged(Board board)
+        {
+            Board = board;   
+        }
+    - Method Board_turnflip:
+      -  private void Board_turnflip(Board board)
+        {
+             
+            onTurnLabel.Content = board.player;
+        }
+### Delegate Example Oscilloscope 
+- Delegate Type Definition: 
+  - public delegate void newDataType(double[] buf);
+- Delegate Events Defintion: 
+  - public event newDataType newData;
+-  Call Event: 
+   -  if (newData != null) { newData(voltages.Where((i, x) => (i < 960)).ToArray());  };
+- Subscribe to the event:
+  - myOscilloscope.newData += newDataHandler;
+    - Method NewDataHandler:
+      - ![Data Handler](../images/newDataHandler.png)
 ## External Hardware Timer vs. DispatcherTimer
 - Timer: 
   - is using a thread and the gui has his thread: Application.Current.      Dispatcher.Invoke(()=>{
@@ -253,6 +306,12 @@ necessary
   - System.DispatcherTimer: GUI sync, Priority is an additional property to be aware of
   - Dispatcher Timer:  synchronized with GUI, the call with be in the messageloop, disadavantage it´s not that predicise , has specific priority, good for events
 
+### Example
+![Timer Example](../images/TimerExample.png)
+-  timer.Tick += myTimer_Tick;
+- timer.Start();
+- timer.Interval = TimeSpan.FromSeconds(1);
+- timeLeft = 10;
 ## Interfaces 
 - A class can have multiple Interfaces therefore you use it either than an abstract class 
 - Not allowed to implement methods, to contain fields
@@ -329,6 +388,10 @@ generated
 ### IEnumerator 
 ![IEnumerator](../images/IEnumerator.png)
 
+### IEnumerator Example Chessgame 
+- public class Board : IEnumerable<Piece>
+- ![BoardEnumerator](../images/chess_IEnumerator.png)
+
 ## Example Array and Enumerator
 ![Arr](../images/Arr_enum.png)
 
@@ -346,6 +409,8 @@ generated
 
 ![OwnCollection](../images/ownCollection.png)
 ![OwnCollection](../images/mainOwnCollection.png)
+
+
 
 ## LINQ (Language Integrated Query)
 
@@ -396,8 +461,12 @@ generated
 ![Task<Int>](../images/Task%3Cint%3E.png)
 ![Task<Int>](../images/Task%3Cint%3EII.png)
 
+### AsyncAwait Example Lab3
+![AsyncAwait](../images/AsycnWaitExampleLab.png)
 
 ## Dictionary Example
 ![Dict](../images/Dict.png)
 
+## Lab1 Bits
+![Bits](../images/Bits.png)
 ## MVVM - Pattern
