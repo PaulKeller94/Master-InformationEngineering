@@ -1,6 +1,5 @@
 # Application Development in C#
-
-## c# in General (Goals)
+## C# in General (Goals)
 - Development of safe programs (less likely to crash)
   - Type safety (strong type checking)
   - Array bounds checking 
@@ -26,6 +25,8 @@
 - double d4 = double.Parse("3.54")
 - f = 3.6 (so ist es ein double), therefore in C#: f = 3.6 f
 - d = 1 / 3 : integer divided by integer = 0 (fällt bei großem Zähler nicht direkt auf, daher gefährlich!)
+ 
+<div style="page-break-after: always;"></div> 
 
 ## Arrays
   - Arrays werden mit new eingeleitet, hier 2 x new (1 x für Array, 1 x für Klasse)
@@ -48,21 +49,25 @@
 
 ## Definitions 
 
-## Reference types: 
+### Reference types: 
     - refer to objects (Instances of classes)
     - "new"
-## Value Type: 
+  
+<div style="page-break-after: always;"></div>
+
+### Value Type: 
     - based on structs
     - have normal and static methods
     - are instantiated implicity
-## Structs: 
+  
+### Structs: 
     - can not have an explicit parameter less constructor
     - they can have explicit constructors with paramters, but these must define every field
     - will not loose their paramter less constructor, if a constructor with params is defined
     - not be inherited, but all are inherited once from "Value Type"
     - can implement interfaces 
     - can be generic 
-## Static: 
+### Static: 
     - Static Fields:
       - "One per class"
       - can be accessed by static and non static methods 
@@ -73,6 +78,8 @@
       - can be accessed by static and non static methods 
       - Mostly used for specific instance creation:
  ![static_property](../images/static_property.png)
+
+<div style="page-break-after: always;"></div>
 
     - Staitc methods:
       - they are not associated with a certain object, but with the class itself
@@ -88,6 +95,8 @@
  
   ![static_class](../images/static_class.png)
 
+<div style="page-break-after: always;"></div>
+
 ## Example of a struct 
 ![Vector_example](../images/struct_example.png)
 
@@ -96,6 +105,7 @@
 - Vector 3D b = a; (whole copy)
 - a.10 = 1000; // a is changing, b not, but would it be a class it would change bcs than it would be a pointer there
 - Array.sort uses the CompareTo from the Interface
+<div style="page-break-after: always;"></div>
 
 ## Enums 
 ![enums_example](../images/enum.png)
@@ -108,6 +118,8 @@
     - protected: within the class and all derived classes
     - public: full access
 
+<div style="page-break-after: always;"></div>
+
 ## Precision with 0.1
     - 0.1f + 0.1f+0.1f + 0.1f+0.1f + 0.1f+0.1f + 0.1f+0.1f + 0.1f = 1,000001
       - not precise enough 
@@ -118,13 +130,15 @@
       - 0,1m+0,1m+0,1m+0,1m+0,1m+0,1m+0,1m+0,1m+0,1m+0,1m = 1,0
     - technical stuff: double 
     - waste amount of data: flout 
-## writeLine
+## WriteLine
 writeLine has an overload of 17 therefore you don’t need to convert an int to a string
 
 ## Constructors
  - if a constructor (with params) is definied, the parameterless (default) constructor will stop existing, otherwise you have to define it. If you have a struct the parameter less constructor will still be there
   
 ![constructor](../images/main_person.png)
+<div style="page-break-after: always;"></div>
+
 ![constructor](../images/L2_main.png)
 
 ## Inheritance 
@@ -136,6 +150,8 @@ writeLine has an overload of 17 therefore you don’t need to convert an int to 
 ![inheritance](../images/car.png)
 ![inheritance](../images/vw.png)
 ![inheritance](../images/carvwmain.png)
+
+<div style="page-break-after: always;"></div>
 
 ## Polymorphism 
 - Base class method: 'virtual' 
@@ -179,6 +195,7 @@ foreach (var item in people){
 - As Keyword -> gefährlicher!, da nicht abgefragt wird => keine Bedingung 
 ![Is-Keyword](../images/IsI.png)
 ![Is-Keyword](../images/IsII.png)
+<div style="page-break-after: always;"></div>
 
 ## Properties 
 - Properties: Backingfield, ohne Backingfield ganz normales Public Feld , get auch bei Properties e.g. idCard()
@@ -212,7 +229,8 @@ necessary
 - It can look more complicated that it needs to be, because the method is defined “elsewhere”
 - Anonymous methods provide an easy way of defining a method “on the fly”
 - ![Anonymous methods](../images/AnonymousMethods.png)
-  
+  <div style="page-break-after: always;"></div>
+
 ## Lambda Functions - Statement Lambda 
 - Even simpler syntax to define a target for a delegate type 
 - often used in LINQ expressions 
@@ -230,15 +248,25 @@ necessary
 - ![Delegate Example](../images/DelegateExampleI.png)
 - ![Delegate Example](../images/DelegateExampleII.png)
 
+<div style="page-break-after: always;"></div>
+
 ### Delegate Example with void and int 
 - DelegateClass:
   - ![DelegateClass](../images/DelegateClass.png)
+  
+  <div style="page-break-after: always;"></div>
+
 - DelegateDefinitions: 
   - ![DelegateDefinitions](../images/DelegateDefinitions.png) 
+
+
 - DelegateVoid:
   - ![DelegateVoid](../images/DelegateVoid.png) 
 - DelegateInt:
   - ![DelegateInt](../images/DelegateInt.png) 
+  
+
+
 - CallDelegates:
   - ![CallDelegates](../images/CallDelegates.png) 
   
@@ -249,10 +277,14 @@ necessary
 3. They can be used in Interfaces
 - ![Delegate Event Example](../images/DelegateEventExampleI.png)
 - ![Delegate Event Example](../images/DelegateEventExampleII.png)
+
 - ![Delegate Event Example](../images/DelegateEventExampleIII.png)
 ### Delegate Example Lab1
 - Delegate Type and Event Definition:
   - ![Delegate Type and Event Definition](../images/Lab1DelegateDefinitions.png)
+
+
+
 - Call Event
   - ![Call Event](../images/Lab1CallEvent.png)
 - Subscribe to Event and execute Method:
@@ -292,6 +324,9 @@ necessary
   - myOscilloscope.newData += newDataHandler;
     - Method NewDataHandler:
       - ![Data Handler](../images/newDataHandler.png)
+
+<div style="page-break-after: always;"></div>
+
 ## External Hardware Timer vs. DispatcherTimer
 - Timer: 
   - is using a thread and the gui has his thread: Application.Current.      Dispatcher.Invoke(()=>{
@@ -312,6 +347,8 @@ necessary
 - timer.Start();
 - timer.Interval = TimeSpan.FromSeconds(1);
 - timeLeft = 10;
+<div style="page-break-after: always;"></div>
+
 ## Interfaces 
 - A class can have multiple Interfaces therefore you use it either than an abstract class 
 - Not allowed to implement methods, to contain fields
@@ -328,6 +365,8 @@ If(OnValueCHanged != null){
                    	 m.getIdentificationNumber();
                 	}
 }
+<div style="page-break-after: always;"></div>
+
 ## Overview 
 - ![Interface Example](../images/Overview.png)
 
@@ -340,6 +379,8 @@ If(OnValueCHanged != null){
 - ![Generics](../images/squares.png)
 - ![Generics](../images/genericenumerator.png)
 -  ![Generics](../images/genenusquare.png)
+  <div style="page-break-after: always;"></div>
+
 ## Inheritance and Generic Classes
 ### Closing 
 - Decrease the number of generic types:
@@ -391,16 +432,24 @@ generated
 ### IEnumerator Example Chessgame 
 - public class Board : IEnumerable<Piece>
 - ![BoardEnumerator](../images/chess_IEnumerator.png)
+  
+<div style="page-break-after: always;"></div>
 
 ## Example Array and Enumerator
 ![Arr](../images/Arr_enum.png)
 
+<div style="page-break-after: always;"></div>
+
 ## Extension Methods 
 ![Extension](../images/ExtensionMethods.png)
+
+
 ![Extension](../images/ExtensionMethodsII.png)
 
 ## Example Collection + Extension Method
 ![Example](../images/Main_Car.png)
+
+
 ![Example](../images/Car_class.png)
 ![Example](../images/Car_collection.png)
 ![Example](../images/Car_extension.png)
@@ -432,12 +481,15 @@ generated
 - Convert toArray() or toList() if you want the job to be done 
 - Cascadieren: Filter -> sorter -> Projector 
 - Mydata.Where(....).OrderBy(.....).Select(......)
-  
+  <div style="page-break-after: always;"></div>
+
 ## Example Funfair 
 
 ![Exercie](../images/ex1.png)
 ![Exercie](../images/ex2.png)
 ![Exercie](../images/ex3.png)
+
+<div style="page-break-after: always;"></div>
 
 ## Solution 
 
@@ -451,6 +503,8 @@ generated
 - Where statement:
 ![Where](../images/Where.png)
  
+ <div style="page-break-after: always;"></div>  
+
 ## AsyncAwait 
 ![AsyncAwait](../images/AsAwI.png)
 ![AsyncAwait](../images/AsAwII.png)
@@ -467,6 +521,11 @@ generated
 ## Dictionary Example
 ![Dict](../images/Dict.png)
 
+<div style="page-break-after: always;"></div>
+
 ## Lab1 Bits
 ![Bits](../images/Bits.png)
+
+<div style="page-break-after: always;"></div>
+
 ## MVVM - Pattern
