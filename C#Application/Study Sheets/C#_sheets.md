@@ -37,12 +37,12 @@
 
     for (int i = 0; i < 100; i++){
 
-        myTest = new myClass();
+        myTest[i] = new myClass();
     }
 
 ## Unicode and Encoding 
     - ASCII -> 7-Bit Representation, 8-bits per char to represent a String in C, can not interpret special characters
-    - UTF8 muss nicht immer kürzer sein z.B. Sonderzeichen (Herz), da ist es gleich lang wie Unicode, kann Sonderzeichen aber darstellen im Gegensatz zu ASCII
+    - UTF8 muss nicht immer kürzer sein z.B. Sonderzeichen (Herz), da ist es größer als Unicode, kann Sonderzeichen aber darstellen im Gegensatz zu ASCII
     - C# uses two bytes per char, so called Unicode
     - Unicode in UTF16, UTF8 en- /decoded
    ![ascii_utf8_unicode](../images/Unicode.png)
@@ -61,7 +61,7 @@
     - are instantiated implicity
   
 ### Structs: 
-    - can not have an explicit parameter less constructor
+    - can not have an explicit parameter less constructor (e.g. new Vector3D v = new Vector() works, but in class is no param less constructor defined)
     - they can have explicit constructors with paramters, but these must define every field
     - will not loose their paramter less constructor, if a constructor with params is defined
     - not be inherited, but all are inherited once from "Value Type"
