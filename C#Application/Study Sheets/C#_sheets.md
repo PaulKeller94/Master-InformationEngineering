@@ -526,6 +526,14 @@ generated
 ## Lab1 Bits
 ![Bits](../images/Bits.png)
 
+### Example 
+![Bits](../images/BinarI.png)
+![Bits](../images/BinaryII.png)
+![Bits](../images/BinaryIV.png)
 <div style="page-break-after: always;"></div>
 
+## LINQ further examples
+![LINQ](../images/FELINQI.png)
+![LINQ](../images/FELINQII.png)
+<div style="page-break-after: always;"></div>
 ## MVVM - Pattern
