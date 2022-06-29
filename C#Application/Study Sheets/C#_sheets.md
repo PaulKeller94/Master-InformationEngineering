@@ -532,6 +532,24 @@ generated
 ![Bits](../images/BinaryIV.png)
 <div style="page-break-after: always;"></div>
 
+# Delegate/ Events and XAML
+public delegate void ChangeValue(Byte newData); 
+
+public event ChangeValue BitChange;
+
+![X](../images/registerEventInXAML.png)
+![X](../imagea/../images/CallEvent.png)
+![X](../imagea/../images/ExecuteEvent.png)
+
+<div style="page-break-after: always;"></div>
+
+# Delegate/ Events and Interface 
+![I](../images/I_I.png)
+![I](../images/I_II.png)
+![I](../images/I_III.png)
+
+<div style="page-break-after: always;"></div>
+
 ## LINQ further examples
 ![LINQ](../images/FELINQI.png)
 ![LINQ](../images/FELINQII.png)
