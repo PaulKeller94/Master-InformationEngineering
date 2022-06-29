@@ -486,6 +486,14 @@ generated
 ![Task<Int>](../images/Task%3Cint%3E.png)
 ![Task<Int>](../images/Task%3Cint%3EII.png)
 
+ <div style="page-break-after: always;"></div>  
+
+### AsyncAwait Task<Int> Example without Static
+![Task<Int>](../imagea/../images/AsynCAwaitExI.png)
+![Task<Int>](../images/AsynCAwaitExII.png)
+
+  <div style="page-break-after: always;"></div>  
+
 ### AsyncAwait Example Lab3
 ![AsyncAwait](../images/AsycnWaitExampleLab.png)
 
