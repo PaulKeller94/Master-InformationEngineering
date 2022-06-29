@@ -279,49 +279,20 @@ necessary
 - ![Delegate Event Example](../images/DelegateEventExampleII.png)
 
 - ![Delegate Event Example](../images/DelegateEventExampleIII.png)
-### Delegate Example Lab1
+### Delegate Example Lab2 Chessgame
 - Delegate Type and Event Definition:
-  - ![Delegate Type and Event Definition](../images/Lab1DelegateDefinitions.png)
-
-
-
-- Call Event
-  - ![Call Event](../images/Lab1CallEvent.png)
+  - ![Delegate Type and Event Definition](../images/Chess_dele.png)
 - Subscribe to Event and execute Method:
-  - ![SubEventandCallMethod](../images/Lab1SubscribeandExecuteEvent.png)
-
-### Delegate Example Chessgame 
-- Delegate Type Definition:
-  -  public delegate void ChessBoardDelegate(Board board);
-- Delegate Events Definition: 
-  - public event ChessBoardDelegate statechanged;
-  - public event ChessBoardDelegate turnFlip;
-- Call events: 
-  - if (statechanged != null) statechanged(this);
-  - if (turnFlip != null) turnFlip(this);
-- Subscribe to the events:
-  - board.statechanged += Board_statechanged;
-  - board.turnFlip += Board_turnflip;
-    - Method Board_statechanged:
-      - private void Board_statechanged(Board board)
-        {
-            Board = board;   
-        }
-    - Method Board_turnflip:
-      -  private void Board_turnflip(Board board)
-        {
-             
-            onTurnLabel.Content = board.player;
-        }
+  - ![SubEventandCallMethod](../imagea/../images/propertyBoard.png)
+- Call Event
+  - ![Call Event](../imagea/../images/Chess_Call.png)
 ### Delegate Example Oscilloscope 
-- Delegate Type Definition: 
-  - public delegate void newDataType(double[] buf);
-- Delegate Events Defintion: 
-  - public event newDataType newData;
--  Call Event: 
-   -  if (newData != null) { newData(voltages.Where((i, x) => (i < 960)).ToArray());  };
+- Delegate Type/ Events Defintion: 
+  - ![Dele Subscribe](../images/Lab3DeleInit.png)
 - Subscribe to the event:
-  - myOscilloscope.newData += newDataHandler;
+  - ![Dele Subscribe](../images/Lab3DeleSub.png)
+-  Call Event: 
+    - ![Dele Call](../images/Lab3DeleCall.png)
     - Method NewDataHandler:
       - ![Data Handler](../images/newDataHandler.png)
 
