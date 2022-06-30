@@ -556,13 +556,20 @@ Examples:
 ![XAMLC#](../images/XAMLC%23.png)
 
 ### Databinding 
-![Databinding](../images/MVVM_0.png)
-![Databinding](../images/MVVM_I.png)
-![Databinding](../images/MVVM_II.png)
+#### App:
+![Databinding](../images/MVVMEx0.png)
+#### Model
+![Databinding](../images/MVVMExI.png)
+![Databinding](../images/MVVMEXII.png)
+#### View 
+![Databinding](../images/MVVMEXIII.png)
+
+#### Extensions
 ![Databinding](../images/MVVM_III.png)
-![Databinding](../images/MVVM_IV.png)
-![Databinding](../images/MVVM_V.png)
-![Databinding](../images/MVVM_VI.png)
+#### ModelView
+![Databinding](../images/MVVMEXIV.png)
+#### App after changing data
+![Databinding](../images/MVVMEXV.png)
 
 ### Mode One Way
 
