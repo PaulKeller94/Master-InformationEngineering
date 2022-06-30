@@ -534,3 +534,36 @@ public event ChangeValue BitChange;
 ![LINQ](../images/FELINQII.png)
 <div style="page-break-after: always;"></div>
 ## MVVM - Pattern
+
+### Content Control 
+Controls with only one single Content
+- Content can be assigned to the „Content“ property or the
+- Inherit from ContentControl
+- Examples:
+  - Button
+  - Label
+  - ViewBox
+  - Window (surprised?)
+Examples:
+- Canvas (Free Positioning with coordinates)
+- StackPanel (Horizontzal and vertical Stacks)
+- DockPanel(Everything is docked, left right etc)
+- UniformGrid(Grid style with automatic Rows and Columns)
+- Grid (Free positioning, resizing, use of row and columns, most common)
+
+### XAML and C#
+
+![XAMLC#](../images/XAMLC%23.png)
+
+### Databinding 
+![Databinding](../images/MVVM_0.png)
+![Databinding](../images/MVVM_I.png)
+![Databinding](../images/MVVM_II.png)
+![Databinding](../images/MVVM_III.png)
+![Databinding](../images/MVVM_IV.png)
+![Databinding](../images/MVVM_V.png)
+![Databinding](../images/MVVM_VI.png)
+
+### Mode One Way
+
+![OneWay](../images/OneWay.png)
