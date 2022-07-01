@@ -154,6 +154,11 @@ writeLine has an overload of 17 therefore you don’t need to convert an int to 
 <div style="page-break-after: always;"></div>
 
 ## Polymorphism 
+- have many forms e.g. base class can be the derived classes 
+- Objects can be identified by more than one type e.g. derived class can be called by his class or base class 
+  - e.g. you have Base Class: Vehicle and derived classes: car, bycycle, boat 
+  - you want to have an array with all three derived classes so you have to make an array of the base class like vehicle
+  - Vehicle [] vehicles = new Vehicle []{car, bycyle, boat};
 - Base class method: 'virtual' 
     - e.g. Person:
       -  idCard() has to be virtual
@@ -417,13 +422,19 @@ generated
 
 ![Extension](../images/ExtensionMethodsII.png)
 
+## Extension Methods Example Split
+![Split](../images/Extension_SplitName.png)
+![Split](../images/Extension_SplitNameII.png)
+
 ## Example Collection + Extension Method
 ![Example](../images/Main_Car.png)
-
-
 ![Example](../images/Car_class.png)
 ![Example](../images/Car_collection.png)
 ![Example](../images/Car_extension.png)
+
+# String.Join
+
+![Join](../images/join.png) 
 
 ## Example OwnCollection
 
@@ -494,6 +505,12 @@ generated
 
   <div style="page-break-after: always;"></div>  
 
+### AsyncAwait Lectureexample 
+![AsyncAwait](../images/AsyncVLI.png)
+![AsyncAwait](../images/AsyncVLII.png)
+
+  <div style="page-break-after: always;"></div>
+
 ### AsyncAwait Example Lab3
 ![AsyncAwait](../images/AsycnWaitExampleLab.png)
 
@@ -504,6 +521,7 @@ generated
 
 ## Lab1 Bits
 ![Bits](../images/Bits.png)
+
 
 ### Example 
 ![Bits](../images/BinarI.png)
@@ -517,8 +535,19 @@ public delegate void ChangeValue(Byte newData);
 public event ChangeValue BitChange;
 
 ![X](../images/registerEventInXAML.png)
-![X](../imagea/../images/CallEvent.png)
-![X](../imagea/../images/ExecuteEvent.png)
+![X](../images/CallEvent.png)
+![X](../images/ExecuteEvent.png)
+
+<div style="page-break-after: always;"></div>
+
+# Delegate/ Event and XAML 
+## UserControl
+![X](../images/LAB1_UserControle.png)
+## XAML
+![X](../images/LAB1_XAML.png)
+
+## MainWindow
+![X](../images/LAB1_MainWindow.png)
 
 <div style="page-break-after: always;"></div>
 
@@ -550,6 +579,21 @@ Examples:
 - DockPanel(Everything is docked, left right etc)
 - UniformGrid(Grid style with automatic Rows and Columns)
 - Grid (Free positioning, resizing, use of row and columns, most common)
+
+#### Content Controls and Panel Controls
+The Controls have only one single content! Therefore we need to add a panel control to the window, bcs Panel Controls have the ability to display multiple controls
+<window>
+  <StackPanel>
+      <StackPanel>
+      </StackPanel>
+      <StackPanel>
+      <StackPanel>
+      <Grid>
+      </Grid>
+      <Button>
+      </Button>
+  </StackPanel>
+</window>
 
 ### XAML and C#
 
