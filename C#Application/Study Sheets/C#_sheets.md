@@ -427,7 +427,7 @@ generated
 ![Split](../images/Extension_SplitNameII.png)
 
 ## Example Collection + Extension Method
-![Example](../images/Main_Car.png)
+
 ![Example](../images/Car_class.png)
 ![Example](../images/Car_collection.png)
 ![Example](../images/Car_extension.png)
@@ -440,6 +440,16 @@ generated
 
 ![OwnCollection](../images/ownCollection.png)
 ![OwnCollection](../images/mainOwnCollection.png)
+
+<div style="page-break-after: always;"></div>
+
+## Example own Collection IEnumerable, IEnumerator 
+![IEnumerator](../images/CustomCollection.png)
+![IEnumerator](../images/EnumeratorI.png)
+![IEnumerator](../images/EnumeratorII.png)
+![IEnumerator](../images/ProgramColli.png)
+
+<div style="page-break-after: always;"></div>
 
 
 
